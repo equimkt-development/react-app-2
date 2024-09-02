@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.marker-green {
+    background-color: green;
+}
+
+.marker-yellow {
+    background-color: yellow;
+}
+
+.marker-red {
+    background-color: red;
+}
