@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import MapComponent from './MapComponent';
+import FeatureToggle from './FeatureToggle';
 
 function App() {
     const [parcels, setParcels] = useState([]);
+    const [featureToggles, setFeatureToggles] = useState({
+        landValue: false,
+        gisAcres: false,
+        valuePerAcre: false,
+        proximityScore: false,
+        trafficScore: false,
+        landValueScore: false,
+        combinedScore: false,
+    });
 
     useEffect(() => {
         fetch('/data/test-data-2.csv') // Path to your CSV file
             .then(response => response.text())
             .then(data => {
-                const parsedData = parseCSV(data); // Ensure this line is present
-                console.log(parsedData); // Log the parsed data
+                const parsedData = parseCSV(data);
+                console.log(parsedData);
                 setParcels(parsedData);
             })
             .catch(error => console.error('Error fetching the CSV file:', error));
     }, []);
 
     const parseCSV = (data) => {
-        const rows = data.split('\n').slice(1); // Skip header row
+        const rows = data.split('\n').slice(1);
         return rows.map(row => {
             const columns = row.split(',');
             return {
@@ -24,15 +34,25 @@ function App() {
                 lon: parseFloat(columns[1]),
                 PARUSEDESC: columns[2],
                 LANDVAL: parseFloat(columns[3]),
-                // Add other fields as needed
+                GISACRES: parseFloat(columns[4]),
+                VALUE_PER_ACRE: parseFloat(columns[5]),
+                PROXIMITY_SCORE: parseFloat(columns[6]),
+                TRAFFIC_SCORE: parseFloat(columns[7]),
+                LAND_VALUE_SCORE: parseFloat(columns[8]),
+                COMBINED_SCORE: parseFloat(columns[9]),
             };
-        }).filter(parcel => !isNaN(parcel.lat) && !isNaN(parcel.lon)); // Filter out invalid entries
+        }).filter(parcel => !isNaN(parcel.lat) && !isNaN(parcel.lon));
+    };
+
+    const handleToggleChange = (toggles) => {
+        setFeatureToggles(toggles);
     };
 
     return (
         <div>
             <h1>Parcel Map</h1>
-            <MapComponent parcels={parcels} />
+            <FeatureToggle onToggle={handleToggleChange} />
+            <MapComponent parcels={parcels} featureToggles={featureToggles} />
         </div>
     );
 }
