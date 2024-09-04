@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import MapComponent from './MapComponent';
-import FeatureToggle from './FeatureToggle';
+import MapComponent from './components/MapComponent/MapComponent';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
     const [parcels, setParcels] = useState([]);
@@ -51,7 +51,7 @@ function App() {
     return (
         <div>
             <h1>Parcel Map</h1>
-            <FeatureToggle onToggle={handleToggleChange} />
+            <Dashboard onToggle={handleToggleChange} />
             <MapComponent parcels={parcels} featureToggles={featureToggles} />
         </div>
     );
