@@ -15,7 +15,8 @@ function App() {
     });
 
     useEffect(() => {
-        fetch('/data/test-data-2.csv') // Path to your CSV file
+        // fetch('/data/test-data-2.csv')
+        fetch('/data/test-data-large.csv')
             .then(response => response.text())
             .then(data => {
                 const parsedData = parseCSV(data);
