@@ -18,7 +18,7 @@ const FeatureToggle = ({ onToggle }) => {
     };
 
     const formatFeatureName = (feature) => {
-        return feature.charAt(0).toUpperCase() + feature.slice(1).replace(/([A-Z])/g, ' $1').trim();
+        return feature === 'gisAcres' ? 'GIS Acres' : feature.charAt(0).toUpperCase() + feature.slice(1).replace(/([A-Z])/g, ' $1').trim();
     };
 
     return (

@@ -37,8 +37,9 @@ const MapComponent = ({ parcels, featureToggles }) => {
                 const customIcon = L.divIcon({
                     className: 'custom-marker',
                     html: `<div style="width: 25px; height: 41px; display: flex; justify-content: center; align-items: center;">
-                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="fill: ${markerColor};">
-                                   <path d="M50 0C33.432 0 20 13.432 20 30c0 20 30 70 30 70s30-50 30-70c0-16.568-13.432-30-30-30zm0 45c-8.284 0-15-6.716-15-15s6.716-15 15-15 15 6.716 15 15-6.716 15-15 15z"/>
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                   <path d="M50 0C33.432 0 20 13.432 20 30c0 20 30 70 30 70s30-50 30-70c0-16.568-13.432-30-30-30zm0 45c-8.284 0-15-6.716-15-15s6.716-15 15-15 15 6.716 15 15-6.716 15-15 15z" fill="${markerColor}" stroke="black" stroke-width="1"/>
+                                   <path d="M50 0C33.432 0 20 13.432 20 30c0 20 30 70 30 70s30-50 30-70c0-16.568-13.432-30-30-30zm0 45c-8.284 0-15-6.716-15-15s6.716-15 15-15 15 6.716 15 15-6.716 15-15 15z" fill="none" stroke="black" stroke-width="1"/>
                                </svg>
                            </div>`,
                     iconSize: [25, 41],
